@@ -83,8 +83,7 @@ rodar o vite
 ```
 ./vendor/bin/sail npm run dev
 ```
+<hr/>
 
-coloque um apelido ao sail
-```
-https://laravel.com/docs/10.x/sail#configuring-a-shell-alias
-```
+### coloque um apelido ao sail
+- [**Laravel docs**](https://laravel.com/docs/10.x/sail#configuring-a-shell-alias)
