@@ -29,7 +29,6 @@ class Create extends Component
     public function updated($property)
     {
         $this->validateOnly($property);
-
     }
 
     public function render()
@@ -41,5 +40,9 @@ class Create extends Component
     {
         $this->validate();
         $this->category->save();
+
+        session()->flash('message', 'Categoria criada com sucesso!');
+
+        return redirect()->route('category.index');
     }
 }
