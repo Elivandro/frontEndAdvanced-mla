@@ -33,5 +33,9 @@ class Update extends Component
     {
         $this->validate();
         $this->category->save();
+
+        session()->flash('message', 'Categoria editada com sucesso.');
+
+        return redirect()->route('category.index');
     }
 }
