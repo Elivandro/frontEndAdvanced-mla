@@ -30,6 +30,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/category', App\Http\Livewire\Categories\Index::class)->name('category.index');
     Route::get('/category/create', App\Http\Livewire\Categories\Create::class)->name('category.create');
     Route::get('/category/{category}/edit', App\Http\Livewire\Categories\Update::class)->name('category.update');
+
+    Route::get('/product', App\Http\Livewire\Products\Index::class)->name('product.index');
+    Route::get('/product/create', App\Http\Livewire\Products\Create::class)->name('product.create');
+    Route::get('/product/{product}/edit', App\Http\Livewire\Products\Create::class)->name('product.update');
+
 });
 
 require __DIR__.'/auth.php';
