@@ -2,32 +2,43 @@
 
 namespace App\Http\Livewire\Products;
 
+use App\Models\Category;
 use App\Models\Product;
 use Livewire\Component;
 
 class Create extends Component
 {
     public Product $product;
+    public $categories;
+    public string $search;
 
-    protected $rules = [
-        'product.name' => 'required|string|min:4|max:255',
-        'product.price' => 'required',
-        'product.description' => 'required'
-    ];
+    protected function rules()
+    {
+        return [
+            'product.category_id' => 'required',
+            'product.name' => 'required|string|min:4|max:255|unique:products,name',
+            'product.price' => 'required',
+            'product.short_description' => 'required|min:4|max:255'
+        ];
+    }
+
+    public function mount()
+    {
+        $this->product = new Product();
+
+        $this->search = "";
+
+        $this->categories = Category::where('name', 'LIKE', "%{$this->search}%")->get();
+    }
 
     public function render()
     {
         return view('livewire.products.create');
     }
 
-    public function updated($property)
+    public function updatedSearch()
     {
-        $this->validateOnly($property);
-    }
-
-    public function mount()
-    {
-        $this->product = new Product();
+        $this->categories = Category::where('name', 'LIKE', "%{$this->search}%")->get();
     }
 
     public function save()
@@ -36,8 +47,6 @@ class Create extends Component
 
         $this->product->save();
 
-        session()->flash('message', 'Produto criado com sucesso!');
-
-        return redirect()->route('product.index');
+        return redirect()->route('product.index')->with('message', 'Produto criado com sucesso!');
     }
 }
