@@ -65,9 +65,17 @@ DB_PORT=
 DB_DATABASE=
 DB_USERNAME=
 DB_PASSWORD=
-```
-rode as migrações
 
+AWS_ACCESS_KEY_ID=
+AWS_SECRET_ACCESS_KEY=
+AWS_DEFAULT_REGION=
+AWS_BUCKET=
+AWS_URL=
+AWS_ENDPOINT=
+AWS_USE_PATH_STYLE_ENDPOINT=
+```
+
+rode as migrações
 ```
 ./vendor/bin/sail artisan migrate
 ```
