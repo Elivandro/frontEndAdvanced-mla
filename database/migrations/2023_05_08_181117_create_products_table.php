@@ -15,7 +15,10 @@ return new class extends Migration
             $table->string('long_description')->nullable();
             $table->string('price');
             $table->string('comparative_price')->nullable();
-            $table->foreignId('category_id')->constrained('categories');
+            $table->foreignId('category_id')
+                ->constrained('categories')
+                ->cascadeOnUpdate()
+                ->cascadeOnDelete();
             $table->timestamps();
         });
     }
